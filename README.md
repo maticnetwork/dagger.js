@@ -2,11 +2,9 @@
 
 eth-dagger is library for dagger project written in node.js and browser. It uses dagger server to get realtime updates from Ethereum Network.
 
-eth-dagger.js is an Open Source Project.
-
 **About dagger**
 
-Dagger helps users to develop Ethereum DApps faster, user friendly and easy to use. For more information:
+Dagger helps users to develop Ethereum DApps faster and user friendly. For more information:
 
 * [Installation](#install)
 * [Example](#example)
@@ -19,7 +17,7 @@ Dagger helps users to develop Ethereum DApps faster, user friendly and easy to u
 
 ```sh
 # Using Yarn
-yarn install eth-dagger
+yarn add eth-dagger
 
 # Using NPM
 npm install eth-dagger --save
@@ -193,7 +191,7 @@ Creates web3 contract wrapper to support dagger.
 
     // dagger contract
     var contract = dagger.contract(web3Contract);
-    var filter = contract.events.Transfer({filter: {from: '0x123456...'}, room: 'latest'j});
+    var filter = contract.events.Transfer({filter: {from: '0x123456...'}, room: 'latest'});
     // watch
     filter.watch(function(data, removed){
         // data.returnValues.to : address to which it has been transferred to
