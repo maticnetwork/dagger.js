@@ -1,0 +1,214 @@
+### eth-dagger
+
+eth-dagger is library for dagger project written in node.js and browser. It uses dagger server to get realtime updates from Ethereum Network.
+
+eth-dagger.js is an Open Source Project.
+
+**About dagger**
+
+Dagger helps users to develop Ethereum DApps faster, user friendly and easy to use. For more information:
+
+* [Installation](#install)
+* [Example](#example)
+* [Events](#events)
+* [API](#api)
+* [License](#license)
+
+<a name="install"></a>
+## Installation
+
+```sh
+# Using Yarn
+yarn install eth-dagger
+
+# Using NPM
+npm install eth-dagger --save
+```
+
+<a name="example"></a>
+## Example
+
+```javascript
+var Dagger = require('eth-dagger');
+
+// connect to Dagger ETH main network (network id: 1)
+var dagger = new Dagger('wss://mainnet.dagger.matic.network'); // dagger server
+
+// get new block as soon as it gets created
+dagger.on('latest:block', function(result) {
+  console.log("New block created: ", result.data);
+});
+
+// get only block number (as it gets created)
+dagger.on('latest:block.number', function(result) {
+  console.log("Current block number: ", result.data);
+});
+```
+
+<a name="events"></a>
+## Events
+
+**Ethereum events**
+
+Every ethereum event has room, and there are two rooms: `latest` and `confirmed`. `latest` events are fired immediately block included in chain. `confirmed` events are fired after 12 confirmations.
+
+If you want to show updates on UI in your DApp, use `latest` events. It will help to make UI/UX better and user friendly.
+
+Use `confirmed` events for irreversible tasks from server or on UI. Like sending email, notifications or allow user to do subsequent task on UI after one transaction gets confirmed.
+
+Every event has to start with room:
+
+```javascript
+
+// latest block number
+dagger.on('latest:block.number', function(result) {
+  console.log("Current block number: ", result.data);
+});
+
+// confirmed (irreversible) incoming transaction
+dagger.on('confirmed:addr/0xa7447.../tx/in', function(result) {
+  // send email to user about new transaction she received
+});
+
+// confirmed (irreversible) contract deployment
+dagger.on('confirmed:tx/0xd66169d..../receipt', function(result) {
+  // send notification to user saying - her contract has been deployed successfully
+});
+```
+
+You can use wildcard for events too. There are two type of wildcards: `+` (for single) and `#` (for multiple). Use with caution as it will fetch more data then you need, and can bombard with data to your DApp.
+
+```javascript
+
+// Listen for every outgoing transaction for any address
+dagger.on('latest:addr/+/tx/out', ...)
+
+// Triggers when 1 GNT (Golem token) get transferred to Golem multisig wallet
+dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/1000000000000000000', ...)
+
+// Triggers when any amount of GNT (Golem token) get transferred to Golem multisig wallet
+dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/+', ...)
+
+// Listen for every Golem token transfer (notice `#` at the end)
+dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/#', ...)
+```
+
+
+| Ethereum event | When? | `removed` flag |
+| --- | --- | --- |
+| block.number | For every new block number created | |
+| block.hash | For every new block hash created | Yes |
+| block | For every new block created | Yes |
+| block/`number` | When particular block in future included in chain | Yes |
+| addr/`address`/tx | On every new transaction for `address` | Yes |
+| addr/`address`/tx/out | On every new outgoing transaction for `address` | Yes |
+| addr/`address`/tx/in | On every new incoming transaction for `address` | Yes |
+| tx/`txId` | When given `txId` included in block | Yes |
+| tx/`txId`/receipt | When receipt is generated (included in block) for <txId>  | Yes |
+| addr/`contractAddress`/deployed | When new `contractAddress` included in block  | Yes |
+| log/`contractAddress` | When new log generated for `contractAddress`  | Yes |
+| log/`contractAddress`/filter/`topic1`/`topic2` | When new log with `topic1` and `topic2` generated for `contractAddress`  | Yes |
+
+
+**Dagger events**
+
+| Dagger event | When? | args |
+| --- | --- | --- |
+| connection.status | When connection status changes | value: Boolean |
+
+<a name="api"></a>
+## API
+
+  * <a href="#connect"><code>Dagger.<b>connect()</b></code></a>
+  * <a href="#on"><code>dagger.<b>on()</b></code></a>
+  * <a href="#once"><code>dagger.<b>once()</b></code></a>
+  * <a href="#off"><code>dagger.<b>off()</b></code></a>
+  * <a href="#of"><code>dagger.<b>of()</b></code></a>
+  * <a href="#end"><code>dagger.<b>end()</b></code></a>
+  * <a href="#contract"><code>dagger.<b>contract()</b></code></a>
+
+-------------------------------------------------------
+<a name="connect"></a>
+### Dagger.connect(url, options)
+
+Connects to the dagger specified by the given url and options and returns a Dagger object.
+
+-------------------------------------------------------
+<a name="on"></a>
+### dagger.on(event, fn)
+
+Subscribe to a topic
+
+* `event` is a `String` topic to subscribe to. `event` wildcard characters are supported (`+` - for single level and `#` - for multi level)
+* `fn` - `function (data, removed)`
+  fn will be executed when event occurred:
+  * `data` data from event
+  * `removed` flag saying if data is removed from blockchain due to re-organization.
+
+-------------------------------------------------------
+<a name="once"></a>
+### dagger.once(event, fn)
+
+Same as `on` but will be fired only once.
+
+-------------------------------------------------------
+<a name="off"></a>
+### dagger.off(event, fn)
+
+Unsubscribe from a topic
+
+* `event` is a `String` topic to unsubscribe from
+* `fn` - `function (data, removed)`
+
+-------------------------------------------------------
+<a name="of"></a>
+### dagger.of(room)
+
+Create room out of dagger. `room` has to be one out of two values: `latest` and `confirmed`
+
+* `room` object has following methods:
+    * `on` same as dagger `on`
+    * `once` same as dagger `once`
+    * `off` same as dagger `off`
+
+-------------------------------------------------------
+<a name="end"></a>
+### dagger.end([force])
+
+Close the dagger, accepts the following options:
+
+* `force`: passing it to true will close the dagger right away. This parameter is optional.
+
+-------------------------------------------------------
+<a name="contract"></a>
+### dagger.contract(web3Contract)
+
+Creates web3 contract wrapper to support dagger.
+
+* `web3Contract`: contract object web3. Example: `new web3.eth.Contract(abi, address)`
+
+    ```javascript
+    // web3 contract
+    var web3Contract = new web3.eth.Contract(abi, address);
+
+    // dagger contract
+    var contract = dagger.contract(web3Contract);
+    var filter = contract.events.Transfer({filter: {from: '0x123456...'}, room: 'latest'j});
+    // watch
+    filter.watch(function(data, removed){
+        // data.returnValues.to : address to which it has been transferred to
+        // data.returnValues.value : value which has been transferred
+    });
+    // watch only once
+    filter.watchOnce(function(data, removed){
+        // data.returnValues.to : address to which it has been transferred to
+        // data.returnValues.value : value which has been transferred
+    });
+    // stop watching
+    filter.stopWatching();
+    ```
+
+<a name="license"></a>
+## License
+
+MIT

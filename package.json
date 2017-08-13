@@ -1,0 +1,62 @@
+{
+  "name": "eth-dagger",
+  "version": "0.0.1-beta.0",
+  "description": "Library to connect with dagger server and manage subscriptions for Ethereum",
+  "main": "lib/index.js",
+  "bin": {
+    "woodendagger": "lib/wooden-dagger.js"
+  },
+  "directories": {
+    "lib": "./lib"
+  },
+  "scripts": {
+    "clean": "rm -rf lib",
+    "build": "npm run lint && npm run clean && babel src/ --out-dir lib/",
+    "lint": "eslint src/ test/*.spec.js",
+    "test": "mocha --compilers js:babel-core/register --colors ./test/*.spec.js",
+    "test:watch": "mocha --compilers js:babel-core/register --colors -w ./test/*.spec.js",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jdkanani/eth-dagger.js.git"
+  },
+  "keywords": [
+    "ethereum",
+    "es6",
+    "dagger",
+    "matic"
+  ],
+  "author": "Jaynti Kanani <jdkanani@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jdkanani/eth-dagger.js/issues"
+  },
+  "homepage": "https://github.com/jdkanani/eth-dagger.js",
+  "dependencies": {
+    "async-mqtt": "^1.0.1",
+    "escape-string-regexp": "^1.0.5",
+    "mosca": "^2.5.2",
+    "web3": "^1.0.0-beta.18",
+    "yargs": "^8.0.2"
+  },
+  "devDependencies": {
+    "babel-cli": "6.24.1",
+    "babel-core": "6.24.1",
+    "babel-eslint": "7.2.3",
+    "babel-loader": "7.0.0",
+    "babel-plugin-add-module-exports": "0.2.1",
+    "babel-preset-es2015": "6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "chai": "3.5.0",
+    "eslint": "3.19.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-loader": "1.7.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-react": "^7.2.0",
+    "mocha": "3.3.0",
+    "webpack": "3.1.0"
+  }
+}
