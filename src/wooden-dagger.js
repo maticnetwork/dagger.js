@@ -1,6 +1,6 @@
-#!/usr/bin/env node
 /* eslint-disable no-console */
 
+import 'babel-polyfill';
 import yargs from 'yargs';
 import mosca from 'mosca';
 import mqtt from 'async-mqtt';
