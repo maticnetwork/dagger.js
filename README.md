@@ -52,9 +52,9 @@ Please do not use `woodendagger` in product. It's actually for development purpo
 ```bash
 $ woodendagger --url=http://localhost:8545
 
-// if you want to start dagger server on different ports:
-// sockport: socket port for backend connection over TCP
-// wsport: websocket port for frontend connection over websocket
+# If you want to start dagger server on different ports,
+# sockport: socket port for backend connection over TCP
+# wsport: websocket port for frontend connection over websocket
 $ woodendagger --url=http://localhost:8545 --sockport=1883 --wsport=1884
 ```
 
