@@ -30,7 +30,8 @@ export default class Dagger extends EventEmitter {
     this._client = mqtt.connect(url, options);
     this._clientConnectPromise = new Promise((resolve) => {
       this._client.on('connect', (...args) => {
-        if (this._clientConnectPromise.isPending()) {
+        if (this._clientConnectPromise && !this._clientConnectPromise.resolved) {
+          this._clientConnectPromise.resolved = true;
           resolve(...args);
         }
       });

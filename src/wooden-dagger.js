@@ -45,6 +45,12 @@ const wooden = {
       }
     });
 
+    server.on('published', (packet, client) => {
+      if (config.verbose && !packet.topic.startsWith("$SYS")) {
+        console.log('[MQTT] Message published at topic: ', packet.topic);
+      }
+    });
+
     server.on('ready', () => {
       // mqtt client
       this.mqttClient = mqtt.connect(`mqtt://0.0.0.0:${config.mosca.port}`);
@@ -269,7 +275,7 @@ const wooden = {
         addressLogs[address].forEach((l) => {
           if (l.topics && l.topics.length > 0) {
             const key = `log/${address}/filter/${l.topics.join('/')}`;
-            this._wrapMessage(room, key, l, removed);
+            topicBasedMessages.push(this._wrapMessage(room, key, l, removed));
           }
         });
 
