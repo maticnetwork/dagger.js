@@ -43,6 +43,21 @@ dagger.on('latest:block.number', function(result) {
 });
 ```
 
+**Test dagger server**
+
+This library consists `woodendagger` executable which is test dagger server on your local machine. So you can test with TestRPC and build DApp instead of using actual Dagger server.
+
+Please do not use `woodendagger` in product. It's actually for development purpose. It doesn't support `removed` flag, so you will always get `removed` as `false` in `woodendagger`.
+
+```bash
+$ woodendagger --url=http://localhost:8545
+
+// if you want to start dagger server on different ports:
+// sockport: socket port for backend connection over TCP
+// wsport: websocket port for frontend connection over websocket
+$ woodendagger --url=http://localhost:8545 --sockport=1883 --wsport=1884
+```
+
 <a name="events"></a>
 ## Events
 
