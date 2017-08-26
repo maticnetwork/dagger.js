@@ -45,8 +45,8 @@ const wooden = {
       }
     });
 
-    server.on('published', (packet, client) => {
-      if (config.verbose && !packet.topic.startsWith("$SYS")) {
+    server.on('published', (packet /* client */) => {
+      if (config.verbose && !packet.topic.startsWith('$SYS')) {
         console.log('[MQTT] Message published at topic: ', packet.topic);
       }
     });
