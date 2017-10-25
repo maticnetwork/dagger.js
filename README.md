@@ -29,8 +29,11 @@ npm install eth-dagger --save
 ```javascript
 var Dagger = require('eth-dagger');
 
-// connect to Dagger ETH main network (network id: 1)
-var dagger = new Dagger('wss://mainnet.dagger.matic.network'); // dagger server
+// connect to Dagger ETH main network (network id: 1) over web socket
+var dagger = new Dagger('ws://mainnet.dagger.matic.network:1884'); // dagger server
+
+// Use mqtt protocol for node (socket)
+// var dagger = new Dagger('mqtt://mainnet.dagger.matic.network:1883'); // dagger server
 
 // get new block as soon as it gets created
 dagger.on('latest:block', function(result) {
