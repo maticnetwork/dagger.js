@@ -8,6 +8,7 @@ Dagger helps users to develop Ethereum DApps faster and user friendly. For more 
 
 * [Installation](#install)
 * [Example](#example)
+* [Network](#network)
 * [Events](#events)
 * [API](#api)
 * [License](#license)
@@ -21,6 +22,23 @@ yarn add eth-dagger
 
 # Using NPM
 npm install eth-dagger --save
+```
+
+<a name="network"></a>
+## Network
+
+**Mainnet**
+
+```
+Websocket: ws://mainnet.dagger.matic.network:1884
+Socket: mqtt://mainnet.dagger.matic.network:1883
+```
+
+**Ropsten**
+
+```
+Websocket: ws://ropsten.dagger.matic.network:1884
+Socket: mqtt://ropsten.dagger.matic.network:1883
 ```
 
 <a name="example"></a>
