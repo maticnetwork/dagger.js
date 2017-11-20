@@ -66,9 +66,9 @@ dagger.on('latest:block.number', function(result) {
 
 **Test dagger server**
 
-This library consists `woodendagger` executable which is test dagger server on your local machine. So you can test with TestRPC and build DApp instead of using actual Dagger server.
+This library consists `woodendagger` executable which is test dagger server on your local machine. So you can test with TestRPC.
 
-Please do not use `woodendagger` in product. It's actually for development purpose. It doesn't support `removed` flag, so you will always get `removed` as `false` in `woodendagger`.
+Please do not use `woodendagger` in production. It's only for development purpose. It doesn't support `removed` flag.
 
 ```bash
 $ woodendagger --url=http://localhost:8545
