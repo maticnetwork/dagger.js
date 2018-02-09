@@ -24,9 +24,9 @@ const topics = [
   },
   {
     topic: 'latest:addr/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359/tx',
-    tokens: ['latest:addr', '0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359', 'tx'],
+    tokens: ['latest:addr', '0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359', 'tx'],
     matches: {
-      'latest:addr/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359/tx': true,
+      'latest:addr/0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359/tx': true,
       'latest:addr/any/tx': false
     }
   },
@@ -34,17 +34,17 @@ const topics = [
     topic: 'latest:addr/+/tx',
     tokens: ['latest:addr', '+', 'tx'],
     matches: {
-      'latest:addr/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359/tx': true,
-      'latest:addr/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d360/tx': true,
-      'latest:addr/0xfB6916095/tx': true
+      'latest:addr/0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359/tx': true,
+      'latest:addr/0xfb6916095ca1df60bb79ce92ce3ea74c37c5d360/tx': true,
+      'latest:addr/0xfb6916095/tx': true
     }
   },
   {
     topic: 'latest:log/+/filter/#',
     tokens: ['latest:log', '+', 'filter', '#'],
     matches: {
-      'latest:log/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359/filter/0x12345': true,
-      'latest:log/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d360/filter/0x12345/0x123456': true
+      'latest:log/0xfb6916095ca1df60bb79ce92ce3ea74c37c5d359/filter/0x12345': true,
+      'latest:log/0xfb6916095ca1df60bb79ce92ce3ea74c37c5d360/filter/0x12345/0x123456': true
     }
   }
 ]

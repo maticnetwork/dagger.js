@@ -6,7 +6,9 @@ import escapeRegex from 'escape-string-regexp'
 
 // Mqtt Regexp
 export default class MqttRegex {
-  constructor(topic) {
+  constructor(rawTopic) {
+    const topic = rawTopic.toLowerCase()
+
     // tokens
     const tokens = MqttRegex.tokanize(topic).map(MqttRegex.processToken)
 
@@ -16,11 +18,13 @@ export default class MqttRegex {
     this.exec = this.exec.bind(this)
   }
 
-  exec(topic) {
+  exec(rawTopic) {
+    const topic = rawTopic.toLowerCase()
     return this.regex.exec(topic)
   }
 
-  static tokanize(topic) {
+  static tokanize(rawTopic) {
+    const topic = rawTopic.toLowerCase()
     return topic.split('/')
   }
 

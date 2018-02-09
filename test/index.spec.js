@@ -198,12 +198,12 @@ describe('Dagger', () => {
       emitMatch('latest:addr/0x123456/tx', {tx: 1})
       expect(dagger.getSubscriptions()).to.deep.equal([])
 
-      dagger.once('latest:log/0x123456/filter/#', noop)
+      dagger.once('latest:log/0x12A456/filter/#', noop)
       expect(dagger.getSubscriptions()).to.deep.equal([
-        'latest:log/0x123456/filter/#'
+        'latest:log/0x12a456/filter/#'
       ])
 
-      emitMatch('latest:log/0x123456/filter/0x1/0x2', {id: 'log1'})
+      emitMatch('latest:log/0x12a456/filter/0x1/0x2', {id: 'log1'})
       expect(dagger.getSubscriptions()).to.deep.equal([])
     })
   })
