@@ -152,6 +152,8 @@ dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252
 | ----------------- | ------------------------------ | -------------- |
 | connection.status | When connection status changes | value: Boolean |
 
+> Event names are case-sensitive. `address`, `txId` and `topics` must be in lowercase.
+
 <a name="api"></a>
 
 ## API
@@ -170,7 +172,7 @@ dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252
 
 ### Dagger.connect(url, options)
 
-Connects to the dagger specified by the given url and options and returns a Dagger object.
+Connects to the dagger specified by the given url and options. It returns a Dagger object.
 
 ---
 
