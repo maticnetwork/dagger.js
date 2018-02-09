@@ -13,6 +13,7 @@ Dagger helps users to develop Ethereum DApps faster and user friendly. For more 
 * [Network](#network)
 * [Events](#events)
 * [API](#api)
+* [Support](#support)
 * [License](#license)
 
 <a name="install"></a>
@@ -263,6 +264,12 @@ Creates web3 contract wrapper to support dagger.
   // stop watching
   filter.stopWatching()
   ```
+
+<a name="support"></a>
+
+## Support
+
+If you have any queries, feedback or feature requests, feel free to reach out to us on telegram: https://t.me/maticnetwork
 
 <a name="license"></a>
 
