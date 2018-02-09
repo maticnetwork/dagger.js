@@ -35,14 +35,14 @@ npm install eth-dagger --save
 **Mainnet**
 
 ```
-Websocket: ws://mainnet.dagger.matic.network:1884
+Websocket: wss://mainnet.dagger.matic.network
 Socket: mqtt://mainnet.dagger.matic.network:1883
 ```
 
 **Ropsten**
 
 ```
-Websocket: ws://ropsten.dagger.matic.network:1884
+Websocket: wss://ropsten.dagger.matic.network
 Socket: mqtt://ropsten.dagger.matic.network:1883
 ```
 
@@ -54,7 +54,7 @@ Socket: mqtt://ropsten.dagger.matic.network:1883
 var Dagger = require('eth-dagger')
 
 // connect to Dagger ETH main network (network id: 1) over web socket
-var dagger = new Dagger('ws://mainnet.dagger.matic.network:1884') // dagger server
+var dagger = new Dagger('wss://mainnet.dagger.matic.network') // dagger server
 
 // Use mqtt protocol for node (socket)
 // var dagger = new Dagger('mqtt://mainnet.dagger.matic.network:1883'); // dagger server
