@@ -1,91 +1,82 @@
 // private watch
 const _watch = (subscription, method, c) => {
   if (!c) {
-    throw new Error('callback is required!');
+    throw new Error('callback is required!')
   }
 
   if (subscription.callback) {
-    return subscription;
+    return subscription
   }
 
-  subscription.callback = (log, ...args) => { // eslint-disable-line no-param-reassign
-    const event = subscription._eventOptions.event;
-    const clonedLog = JSON.parse(JSON.stringify(log));
-    const parsedLog = subscription.contract._decodeEventABI.call(event, clonedLog);
-    c(parsedLog, ...args);
-  };
+  subscription.callback = (log, ...args) => {
+    // eslint-disable-line no-param-reassign
+    const event = subscription._eventOptions.event
+    const clonedLog = JSON.parse(JSON.stringify(log))
+    const parsedLog = subscription.contract._decodeEventABI.call(
+      event,
+      clonedLog
+    )
+    c(parsedLog, ...args)
+  }
 
-  subscription.dagger[method](subscription.route, subscription.callback);
-  return subscription;
-};
-
+  subscription.dagger[method](subscription.route, subscription.callback)
+  return subscription
+}
 
 /**
  * Event subscription
  */
 class EventSubscription {
-  // dagger
-  dagger = null
-  // web3 contract instance
-  contract = null
-  // name of event
-  name = null
-  // options: filter and room
-  options = null
-  // event options: event
-  _eventOptions = null
-  // route build in constructor
-  route = null
-
-  // callback
-  callback = null
-
-  constructor (dagger, contract, name, options = {}) {
-    this.dagger = dagger;
-    this.contract = contract;
-    this.name = name;
-    this.options = options;
+  constructor(dagger, contract, name, options = {}) {
+    this.dagger = dagger
+    this.contract = contract
+    this.name = name
+    this.options = options
 
     // set room
-    this.options.room = this.options.room || 'latest';
-    this.options.filter = this.options.filter || {};
+    this.options.room = this.options.room || 'latest'
+    this.options.filter = this.options.filter || {}
 
     // get event options
-    this._eventOptions = this.contract._generateEventOptions(this.name, this.options);
+    this._eventOptions = this.contract._generateEventOptions(
+      this.name,
+      this.options
+    )
 
     // build topics
-    let topics = this._eventOptions.params.topics;
+    let topics = this._eventOptions.params.topics
     if (topics && topics.length > 0) {
-      topics = topics.map(t => (t || '+').toLowerCase());
+      topics = topics.map(t => (t || '+').toLowerCase())
     } else {
       // for all events
-      topics = ['#'];
+      topics = ['#']
     }
 
     // set route
-    const address = this.contract.options.address.toLowerCase();
-    this.route = `${this.options.room}:log/${address}/filter/${topics.join('/')}`;
+    const address = this.contract.options.address.toLowerCase()
+    this.route = `${this.options.room}:log/${address}/filter/${topics.join(
+      '/'
+    )}`
   }
 
-  watch (fn) {
-    return _watch(this, 'on', fn);
+  watch(fn) {
+    return _watch(this, 'on', fn)
   }
 
-  watchOnce (fn) {
-    return _watch(this, 'once', fn);
+  watchOnce(fn) {
+    return _watch(this, 'once', fn)
   }
 
-  stopWatching () {
+  stopWatching() {
     if (!this.callback) {
-      return this;
+      return this
     }
 
-    this.dagger.off(this.route, this.callback);
-    this.callback = null;
-    return this;
+    this.dagger.off(this.route, this.callback)
+    this.callback = null
+    return this
   }
 }
-
 
 /**
  * @file contract.js
@@ -95,41 +86,35 @@ class EventSubscription {
  *  var contract = new dagger.Contract(dagger, web3Contract);
  */
 export default class Contract {
-  dagger = null
-  _contract = null
-
-  // events
-  events = null
-
-  constructor (dagger, contract) {
+  constructor(dagger, contract) {
     // events
-    this.events = {};
+    this.events = {}
 
     // set properties
-    this.dagger = dagger;
-    this.contract = contract;
+    this.dagger = dagger
+    this.contract = contract
   }
 
-  set contract (value) {
-    this._contract = value;
+  set contract(value) {
+    this._contract = value
 
     // events
-    Object.keys(this._contract.events).forEach((name) => {
-      this.events[name] = this.subscription.bind(this, name);
+    Object.keys(this._contract.events).forEach(name => {
+      this.events[name] = this.subscription.bind(this, name)
       // storing old subscription (in case)
-      this.events[name]._oldSubscription = this._contract.events[name];
-    });
+      this.events[name]._oldSubscription = this._contract.events[name]
+    })
   }
 
-  get contract () {
-    return this._contract;
+  get contract() {
+    return this._contract
   }
 
-  subscription (name, options) {
+  subscription(name, options) {
     if (!this.contract.options.address) {
-      throw new Error('contract address is required for subscription');
+      throw new Error('contract address is required for subscription')
     }
 
-    return new EventSubscription(this.dagger, this.contract, name, options);
+    return new EventSubscription(this.dagger, this.contract, name, options)
   }
 }
