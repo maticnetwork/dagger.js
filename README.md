@@ -36,14 +36,14 @@ npm install eth-dagger --save
 
 ```
 Websocket: wss://mainnet.dagger.matic.network
-Socket: mqtt://mainnet.dagger.matic.network:1883
+Socket: mqtts://mainnet.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
 **Ropsten**
 
 ```
 Websocket: wss://ropsten.dagger.matic.network
-Socket: mqtt://ropsten.dagger.matic.network:1883
+Socket: mqtts://ropsten.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
 <a name="example"></a>
@@ -57,7 +57,7 @@ var Dagger = require('eth-dagger')
 var dagger = new Dagger('wss://mainnet.dagger.matic.network') // dagger server
 
 // Use mqtt protocol for node (socket)
-// var dagger = new Dagger('mqtt://mainnet.dagger.matic.network:1883'); // dagger server
+// var dagger = new Dagger('mqtts://mainnet.dagger.matic.network'); // dagger server
 
 // get new block as soon as it gets created
 dagger.on('latest:block', function(result) {
