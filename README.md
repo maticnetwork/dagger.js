@@ -51,7 +51,7 @@ Socket: mqtts://kovan.dagger.matic.network (You can also use `ssl://` protocol)
 ## Example
 
 ```javascript
-var Dagger = require('eth-dagger')
+var Dagger = require('eth-dagger').default
 
 // connect to Dagger ETH main network (network id: 1) over web socket
 var dagger = new Dagger('wss://mainnet.dagger.matic.network') // dagger server
@@ -61,12 +61,12 @@ var dagger = new Dagger('wss://mainnet.dagger.matic.network') // dagger server
 
 // get new block as soon as it gets created
 dagger.on('latest:block', function(result) {
-  console.log('New block created: ', result.data)
+  console.log('New block created: ', result)
 })
 
 // get only block number (as it gets created)
 dagger.on('latest:block.number', function(result) {
-  console.log('Current block number: ', result.data)
+  console.log('Current block number: ', result)
 })
 ```
 
@@ -77,12 +77,15 @@ This library consists `woodendagger` executable which is test dagger server on y
 Please do not use `woodendagger` in production. It's only for development purpose. It doesn't support `removed` flag.
 
 ```bash
-$ woodendagger --url=http://localhost:8545
+$ woodendagger --url=https://mainnet.infura.io # or http://localhost:8545 for local json-rpc
 
 # If you want to start dagger server on different ports,
 # sockport: socket port for backend connection over TCP
 # wsport: websocket port for frontend connection over websocket
 $ woodendagger --url=http://localhost:8545 --sockport=1883 --wsport=1884
+
+# To connect from dagger:
+var dagger = new Dagger('mqtt://localhost:1883')
 ```
 
 <a name="events"></a>
