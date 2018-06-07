@@ -31,6 +31,9 @@ export default class Dagger extends EventEmitter {
           resolve(...args)
         }
       })
+      this._client.on('reconnect', error => {
+        console.log('reconnecting...')
+      })
     })
 
     // mqtt client events
