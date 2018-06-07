@@ -12,12 +12,12 @@
   },
   "scripts": {
     "clean": "rm -rf lib",
-    "build": "npm run lint && npm run clean && babel src/ --out-dir lib/",
+    "build":
+      "npm run lint && npm run clean && babel src/ --out-dir lib/ && npm run pack",
     "lint": "eslint src/**/*.js test/**/*.spec.js",
-    "test":
-      "mocha --compilers js:babel-core/register --colors ./test/**/*.spec.js",
+    "test": "mocha --require babel-core/register --colors ./test/**/*.spec.js",
     "test:watch":
-      "mocha --compilers js:babel-core/register --colors -w ./test/**/*.spec.js",
+      "mocha --require babel-core/register --colors -w ./test/**/*.spec.js",
     "prepublish": "npm run build",
     "pack": "webpack && webpack --env build"
   },

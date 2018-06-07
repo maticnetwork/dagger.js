@@ -31,7 +31,7 @@ export default class Dagger extends EventEmitter {
           resolve(...args)
         }
       })
-      this._client.on('reconnect', error => {
+      this._client.on('reconnect', () => {
         console.log('reconnecting...')
       })
     })
