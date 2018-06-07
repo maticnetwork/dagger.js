@@ -1,6 +1,6 @@
 {
   "name": "eth-dagger",
-  "version": "0.0.1-beta.4",
+  "version": "0.0.1",
   "description":
     "Library to connect with dagger server and manage subscriptions for Ethereum",
   "main": "lib/index.js",

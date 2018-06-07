@@ -51,7 +51,7 @@ Socket: mqtts://kovan.dagger.matic.network (You can also use `ssl://` protocol)
 ## Example
 
 ```javascript
-var Dagger = require('eth-dagger').default
+var Dagger = require('eth-dagger')
 
 // connect to Dagger ETH main network (network id: 1) over web socket
 var dagger = new Dagger('wss://mainnet.dagger.matic.network') // dagger server
