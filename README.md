@@ -145,6 +145,8 @@ dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252
 | addr/`address`/tx/out                          | On every new outgoing transaction for `address`                         | Yes            |
 | addr/`address`/tx/in                           | On every new incoming transaction for `address`                         | Yes            |
 | tx/`txId`                                      | When given `txId` included in block                                     | Yes            |
+| tx/`txId`/success                              | When tx status is success (included in block) for <txId>                | Yes            |
+| tx/`txId`/fail                                 | When tx fails (included in block) for <txId>                            | Yes            |
 | tx/`txId`/receipt                              | When receipt is generated (included in block) for <txId>                | Yes            |
 | addr/`contractAddress`/deployed                | When new `contractAddress` included in block                            | Yes            |
 | log/`contractAddress`                          | When new log generated for `contractAddress`                            | Yes            |
