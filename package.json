@@ -1,8 +1,7 @@
 {
   "name": "eth-dagger",
   "version": "0.0.1",
-  "description":
-    "Library to connect with dagger server and manage subscriptions for Ethereum",
+  "description": "Library to connect with dagger server and manage subscriptions for Ethereum",
   "main": "lib/index.js",
   "bin": {
     "woodendagger": "lib/wooden-dagger.js"
@@ -12,12 +11,10 @@
   },
   "scripts": {
     "clean": "rm -rf lib",
-    "build":
-      "npm run lint && npm run clean && babel src/ --out-dir lib/ && npm run pack",
+    "build": "npm run lint && npm run clean && babel src/ --out-dir lib/ && npm run pack",
     "lint": "eslint src/**/*.js test/**/*.spec.js",
     "test": "mocha --require babel-core/register --colors ./test/**/*.spec.js",
-    "test:watch":
-      "mocha --require babel-core/register --colors -w ./test/**/*.spec.js",
+    "test:watch": "mocha --require babel-core/register --colors -w ./test/**/*.spec.js",
     "prepublish": "npm run build",
     "pack": "webpack && webpack --env build"
   },
@@ -25,7 +22,12 @@
     "type": "git",
     "url": "https://github.com/jdkanani/eth-dagger.js.git"
   },
-  "keywords": ["ethereum", "es6", "dagger", "matic"],
+  "keywords": [
+    "ethereum",
+    "es6",
+    "dagger",
+    "matic"
+  ],
   "author": "Jaynti Kanani <jdkanani@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -33,8 +35,8 @@
   },
   "homepage": "https://github.com/jdkanani/eth-dagger.js",
   "dependencies": {
+    "@babel/polyfill": "7.0.0-beta.54",
     "async-mqtt": "^1.0.1",
-    "babel-polyfill": "^6.23.0",
     "escape-string-regexp": "^1.0.5",
     "mosca": "^2.5.2",
     "web3": "^1.0.0-beta.22",
@@ -42,12 +44,12 @@
     "yargs": "^8.0.2"
   },
   "devDependencies": {
-    "babel-cli": "6.24.1",
-    "babel-core": "6.24.1",
+    "@babel/cli": "7.0.0-beta.54",
+    "@babel/core": "7.0.0-beta.54",
+    "@babel/preset-env": "7.0.0-beta.54",
     "babel-eslint": "7.2.3",
-    "babel-loader": "7.0.0",
+    "babel-loader": "^8.0.0-beta.0",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-env": "^1.6.1",
     "chai": "3.5.0",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "^15.1.0",
