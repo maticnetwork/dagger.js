@@ -38,6 +38,8 @@
     "@babel/polyfill": "7.0.0-beta.54",
     "async-mqtt": "^1.0.1",
     "escape-string-regexp": "^1.0.5",
+    "ethereumjs-util": "^5.2.0",
+    "ethjs-util": "^0.1.6",
     "mosca": "^2.5.2",
     "web3": "^1.0.0-beta.22",
     "webpack-cli": "2.0.10",

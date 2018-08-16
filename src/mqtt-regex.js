@@ -1,5 +1,5 @@
 import escapeRegex from 'escape-string-regexp'
-
+import { addHexPrefix, bufferToHex, setLengthLeft } from 'ethereumjs-util'
 //
 // Inspired from mqtt-regex (from RangerMauve) https://github.com/RangerMauve/mqtt-regex
 //
@@ -25,7 +25,16 @@ export default class MqttRegex {
 
   static tokanize(rawTopic) {
     const topic = rawTopic.toLowerCase()
-    return topic.split('/')
+    let tokens = topic.split('/')
+    if (tokens.length >= 4 && tokens[0].includes(':log')) {
+      for (let i = 4; i < tokens.length; i++) {
+        if (tokens[i] !== '+' && tokens[i] !== '#') {
+          tokens[i] = bufferToHex(setLengthLeft(addHexPrefix(tokens[i]), 32))
+        }
+      }
+    }
+
+    return tokens
   }
 
   static makeRegex(tokens) {
