@@ -3,7 +3,7 @@
 import chai from 'chai'
 import Web3 from 'web3'
 import Dagger from '../src/index'
-import {abi as ERCABI, TransferLog} from './bat-token-abi'
+import { abi as ERCABI, TransferLog } from './bat-token-abi'
 
 const expect = chai.expect
 const web3 = new Web3()
@@ -33,7 +33,7 @@ describe('Contract', () => {
         `latest:log/${BATAddress}/filter/${TransferABI}/+/+`
       )
 
-      subscription = contract.events.Transfer({filter: {_to: GNTAddress}})
+      subscription = contract.events.Transfer({ filter: { _to: GNTAddress } })
       expect(subscription.route).to.be.equal(
         `latest:log/${BATAddress}/filter/${TransferABI}/+/${web3.utils.leftPad(
           GNTAddress,
@@ -47,7 +47,9 @@ describe('Contract', () => {
         `latest:log/${BATAddress}/filter/${ApprovalABI}/+/+`
       )
 
-      subscription = contract.events.Approval({filter: {_spender: GNTAddress}})
+      subscription = contract.events.Approval({
+        filter: { _spender: GNTAddress }
+      })
       expect(subscription.route).to.be.equal(
         `latest:log/${BATAddress}/filter/${ApprovalABI}/+/${web3.utils.leftPad(
           GNTAddress,
@@ -56,7 +58,7 @@ describe('Contract', () => {
       )
 
       subscription = contract.events.Approval({
-        filter: {_spender: GNTAddress, _owner: BATAddress}
+        filter: { _spender: GNTAddress, _owner: BATAddress }
       })
       expect(subscription.route).to.be.equal(
         `latest:log/${BATAddress}/filter/${ApprovalABI}/${web3.utils.leftPad(
@@ -75,22 +77,22 @@ describe('Contract', () => {
     })
 
     it('should set room', () => {
-      let subscription = contract.events.Transfer({room: 'confirmed'})
+      let subscription = contract.events.Transfer({ room: 'confirmed' })
       expect(subscription.route).to.be.equal(
         `confirmed:log/${BATAddress}/filter/${TransferABI}/+/+`
       )
 
-      subscription = contract.events.Approval({room: 'confirmed'})
+      subscription = contract.events.Approval({ room: 'confirmed' })
       expect(subscription.route).to.be.equal(
         `confirmed:log/${BATAddress}/filter/${ApprovalABI}/+/+`
       )
 
-      subscription = contract.events.Transfer({room: 'latest'})
+      subscription = contract.events.Transfer({ room: 'latest' })
       expect(subscription.route).to.be.equal(
         `latest:log/${BATAddress}/filter/${TransferABI}/+/+`
       )
 
-      subscription = contract.events.Approval({room: 'latest'})
+      subscription = contract.events.Approval({ room: 'latest' })
       expect(subscription.route).to.be.equal(
         `latest:log/${BATAddress}/filter/${ApprovalABI}/+/+`
       )
@@ -98,7 +100,7 @@ describe('Contract', () => {
 
     it('should set room for all events', () => {
       // allEvents method
-      const subscription = contract.events.allEvents({room: 'confirmed'})
+      const subscription = contract.events.allEvents({ room: 'confirmed' })
       expect(subscription.route).to.be.equal(
         `confirmed:log/${BATAddress}/filter/#`
       )
