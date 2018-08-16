@@ -8,13 +8,13 @@ eth-dagger is library for dagger project written in node.js and browser. It uses
 
 Dagger helps users to develop Ethereum DApps faster and user friendly. For more information:
 
-* [Installation](#install)
-* [Example](#example)
-* [Network](#network)
-* [Events](#events)
-* [API](#api)
-* [Support](#support)
-* [License](#license)
+- [Installation](#install)
+- [Example](#example)
+- [Network](#network)
+- [Events](#events)
+- [API](#api)
+- [Support](#support)
+- [License](#license)
 
 <a name="install"></a>
 
@@ -51,23 +51,23 @@ Socket: mqtts://kovan.dagger.matic.network (You can also use `ssl://` protocol)
 ## Example
 
 ```javascript
-var Dagger = require('eth-dagger')
+var Dagger = require("eth-dagger");
 
 // connect to Dagger ETH main network (network id: 1) over web socket
-var dagger = new Dagger('wss://mainnet.dagger.matic.network') // dagger server
+var dagger = new Dagger("wss://mainnet.dagger.matic.network"); // dagger server
 
 // Use mqtt protocol for node (socket)
 // var dagger = new Dagger('mqtts://mainnet.dagger.matic.network'); // dagger server
 
 // get new block as soon as it gets created
-dagger.on('latest:block', function(result) {
-  console.log('New block created: ', result)
-})
+dagger.on("latest:block", function(result) {
+  console.log("New block created: ", result);
+});
 
 // get only block number (as it gets created)
-dagger.on('latest:block.number', function(result) {
-  console.log('Current block number: ', result)
-})
+dagger.on("latest:block.number", function(result) {
+  console.log("Current block number: ", result);
+});
 ```
 
 **Test dagger server**
@@ -104,19 +104,19 @@ Every event has to start with room:
 
 ```javascript
 // latest block number
-dagger.on('latest:block.number', function(result) {
-  console.log('Current block number: ', result.data)
-})
+dagger.on("latest:block.number", function(result) {
+  console.log("Current block number: ", result.data);
+});
 
 // confirmed (irreversible) incoming transaction
-dagger.on('confirmed:addr/0xa7447.../tx/in', function(result) {
+dagger.on("confirmed:addr/0xa7447.../tx/in", function(result) {
   // send email to user about new transaction she received
-})
+});
 
 // confirmed (irreversible) contract deployment
-dagger.on('confirmed:tx/0xd66169d..../receipt', function(result) {
+dagger.on("confirmed:tx/0xd66169d..../receipt", function(result) {
   // send notification to user saying - her contract has been deployed successfully
-})
+});
 ```
 
 You can use wildcard for events too. There are two type of wildcards: `+` (for single) and `#` (for multiple). Use with caution as it will fetch more data then you need, and can bombard with data to your DApp.
@@ -126,7 +126,7 @@ You can use wildcard for events too. There are two type of wildcards: `+` (for s
 dagger.on('latest:addr/+/tx/out', ...)
 
 // Triggers when 1 GNT (Golem token) get transferred to Golem multisig wallet
-dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/1000000000000000000', ...)
+dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/#', ...)
 
 // Triggers when any amount of GNT (Golem token) get transferred to Golem multisig wallet
 dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/+', ...)
@@ -164,13 +164,13 @@ dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252
 
 ## API
 
-* <a href="#connect"><code>Dagger.<b>connect()</b></code></a>
-* <a href="#on"><code>dagger.<b>on()</b></code></a>
-* <a href="#once"><code>dagger.<b>once()</b></code></a>
-* <a href="#off"><code>dagger.<b>off()</b></code></a>
-* <a href="#of"><code>dagger.<b>of()</b></code></a>
-* <a href="#end"><code>dagger.<b>end()</b></code></a>
-* <a href="#contract"><code>dagger.<b>contract()</b></code></a>
+- <a href="#connect"><code>Dagger.<b>connect()</b></code></a>
+- <a href="#on"><code>dagger.<b>on()</b></code></a>
+- <a href="#once"><code>dagger.<b>once()</b></code></a>
+- <a href="#off"><code>dagger.<b>off()</b></code></a>
+- <a href="#of"><code>dagger.<b>of()</b></code></a>
+- <a href="#end"><code>dagger.<b>end()</b></code></a>
+- <a href="#contract"><code>dagger.<b>contract()</b></code></a>
 
 ---
 
@@ -188,11 +188,11 @@ Connects to the dagger specified by the given url and options. It returns a Dagg
 
 Subscribe to a topic
 
-* `event` is a `String` topic to subscribe to. `event` wildcard characters are supported (`+` - for single level and `#` - for multi level)
-* `fn` - `function (data, removed)`
+- `event` is a `String` topic to subscribe to. `event` wildcard characters are supported (`+` - for single level and `#` - for multi level)
+- `fn` - `function (data, removed)`
   fn will be executed when event occurred:
-  * `data` data from event
-  * `removed` flag saying if data is removed from blockchain due to re-organization.
+  - `data` data from event
+  - `removed` flag saying if data is removed from blockchain due to re-organization.
 
 ---
 
@@ -210,8 +210,8 @@ Same as `on` but will be fired only once.
 
 Unsubscribe from a topic
 
-* `event` is a `String` topic to unsubscribe from
-* `fn` - `function (data, removed)`
+- `event` is a `String` topic to unsubscribe from
+- `fn` - `function (data, removed)`
 
 ---
 
@@ -221,10 +221,10 @@ Unsubscribe from a topic
 
 Create room out of dagger. `room` has to be one out of two values: `latest` and `confirmed`
 
-* `room` object has following methods:
-  * `on` same as dagger `on`
-  * `once` same as dagger `once`
-  * `off` same as dagger `off`
+- `room` object has following methods:
+  - `on` same as dagger `on`
+  - `once` same as dagger `once`
+  - `off` same as dagger `off`
 
 ---
 
@@ -234,7 +234,7 @@ Create room out of dagger. `room` has to be one out of two values: `latest` and 
 
 Close the dagger, accepts the following options:
 
-* `force`: passing it to true will close the dagger right away. This parameter is optional.
+- `force`: passing it to true will close the dagger right away. This parameter is optional.
 
 ---
 
@@ -244,30 +244,30 @@ Close the dagger, accepts the following options:
 
 Creates web3 contract wrapper to support dagger.
 
-* `web3Contract`: contract object web3. Example: `new web3.eth.Contract(abi, address)`
+- `web3Contract`: contract object web3. Example: `new web3.eth.Contract(abi, address)`
 
   ```javascript
   // web3 contract
-  var web3Contract = new web3.eth.Contract(abi, address)
+  var web3Contract = new web3.eth.Contract(abi, address);
 
   // dagger contract
-  var contract = dagger.contract(web3Contract)
+  var contract = dagger.contract(web3Contract);
   var filter = contract.events.Transfer({
-    filter: {from: '0x123456...'},
-    room: 'latest'
-  })
+    filter: { from: "0x123456..." },
+    room: "latest"
+  });
   // watch
   filter.watch(function(data, removed) {
     // data.returnValues.to : address to which it has been transferred to
     // data.returnValues.value : value which has been transferred
-  })
+  });
   // watch only once
   filter.watchOnce(function(data, removed) {
     // data.returnValues.to : address to which it has been transferred to
     // data.returnValues.value : value which has been transferred
-  })
+  });
   // stop watching
-  filter.stopWatching()
+  filter.stopWatching();
   ```
 
 <a name="support"></a>

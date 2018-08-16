@@ -1,8 +1,7 @@
 {
   "name": "eth-dagger",
   "version": "0.0.2",
-  "description":
-    "Library to connect with dagger server and manage subscriptions for Ethereum",
+  "description": "Library to connect with dagger server and manage subscriptions for Ethereum",
   "main": "lib/index.js",
   "bin": {
     "woodendagger": "lib/wooden-dagger.js"
@@ -12,12 +11,10 @@
   },
   "scripts": {
     "clean": "rm -rf lib",
-    "build":
-      "npm run lint && npm run clean && babel src/ --out-dir lib/ && npm run pack",
+    "build": "npm run lint && npm run clean && babel src/ --out-dir lib/ && npm run pack",
     "lint": "eslint src/**/*.js test/**/*.spec.js",
     "test": "mocha --require @babel/register --colors ./test/**/*.spec.js",
-    "test:watch":
-      "mocha --require @babel/register --colors -w ./test/**/*.spec.js",
+    "test:watch": "mocha --require @babel/register --colors -w ./test/**/*.spec.js",
     "prepublish": "npm run build",
     "pack": "webpack && webpack --env build"
   },
@@ -25,7 +22,12 @@
     "type": "git",
     "url": "https://github.com/jdkanani/eth-dagger.js.git"
   },
-  "keywords": ["ethereum", "es6", "dagger", "matic"],
+  "keywords": [
+    "ethereum",
+    "es6",
+    "dagger",
+    "matic"
+  ],
   "author": "Jaynti Kanani <jdkanani@gmail.com>",
   "license": "MIT",
   "bugs": {
@@ -36,6 +38,8 @@
     "@babel/polyfill": "7.0.0-beta.54",
     "async-mqtt": "^1.0.1",
     "escape-string-regexp": "^1.0.5",
+    "ethereumjs-util": "^5.2.0",
+    "ethjs-util": "^0.1.6",
     "mosca": "^2.5.2",
     "web3": "^1.0.0-beta.22",
     "webpack-cli": "2.0.10",
