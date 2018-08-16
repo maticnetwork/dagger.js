@@ -6,7 +6,7 @@ eth-dagger is library for dagger project written in node.js and browser. It uses
 
 **About dagger**
 
-Dagger helps users to develop Ethereum DApps faster and user friendly. For more information:
+Dagger helps users to develop faster and better Ethereum DApps. For more information:
 
 - [Installation](#install)
 - [Example](#example)
