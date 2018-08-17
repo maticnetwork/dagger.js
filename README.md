@@ -128,8 +128,8 @@ dagger.on('latest:addr/+/tx/out', ...)
 // Triggers when 1 GNT (Golem token) get transferred to Golem multisig wallet
 dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/#', ...)
 
-// Triggers when any amount of GNT (Golem token) get transferred to Golem multisig wallet
-dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/+', ...)
+// Triggers when any amount of GNT (Golem token) get sent from Golem multisig wallet
+dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/#', ...)
 
 // Listen for every Golem token transfer (notice `#` at the end)
 dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/#', ...)
