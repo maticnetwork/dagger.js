@@ -46,6 +46,13 @@ Websocket: wss://kovan.dagger.matic.network
 Socket: mqtts://kovan.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
+**Ropsten**
+
+```
+Websocket: wss://ropsten.dagger.matic.network
+Socket: mqtts://ropsten.dagger.matic.network (You can also use `ssl://` protocol)
+```
+
 <a name="example"></a>
 
 ## Example
