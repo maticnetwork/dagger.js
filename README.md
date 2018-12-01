@@ -13,6 +13,7 @@ Dagger helps users to develop faster and better Ethereum DApps. For more informa
 - [Network](#network)
 - [Events](#events)
 - [API](#api)
+- [Examples](#examples)
 - [Support](#support)
 - [License](#license)
 
@@ -276,6 +277,27 @@ Creates web3 contract wrapper to support dagger.
   // stop watching
   filter.stopWatching();
   ```
+
+<a name="examples"></a>
+
+## Examples
+
+**To listen ERC20 transfer event**
+
+Use following topic to listen ERC20 transfer event. Use `+` instead of <contract-address> or <from-address> or <to-address> if you want to listen for `any` value.
+
+For latest events:
+
+```
+latest:log/<contract-address>/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/<from-address>/<to-address>
+```
+
+For confirmed events:
+
+```
+confirmed:log/<contract-address>/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/<from-address>/<to-address>
+```
+
 
 <a name="support"></a>
 
