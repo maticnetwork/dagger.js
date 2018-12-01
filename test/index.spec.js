@@ -66,7 +66,8 @@ describe('Dagger', () => {
     })
     it('should add subscription with zerofill topics', () => {
       // add subscription
-      const url ='latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3cf/0x00000000000000000000000000000000000007da82c7ab4771ff031b66536cf9/0x00000000000000000000000000000000000007da82c7ab4771ff031b66536cf9/+'
+      const url =
+        'latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3cf/0x00000000000000000000000000000000000007da82c7ab4771ff031b66536cf9/0x00000000000000000000000000000000000007da82c7ab4771ff031b66536cf9/+'
       dagger.on(url, noop)
       subscriptions.push(url)
       expect(dagger.getSubscriptions()).to.deep.equal(subscriptions)
@@ -109,7 +110,10 @@ describe('Dagger', () => {
       const url =
         'latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3cf/0x7da82c7ab4771ff031b66536cf9/0x7da82c7ab4771ff031b66536cf9/+'
       dagger.off(url, noop)
-      removeItem(subscriptions, url)
+      removeItem(
+        subscriptions,
+        'latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3cf/0x7da82c7ab4771ff031b66536cf9/0x7da82c7ab4771ff031b66536cf9/+'
+      )
       expect(dagger.getSubscriptions()).to.deep.equal(subscriptions)
     })
 
