@@ -6,7 +6,7 @@ eth-dagger is library for dagger project written in node.js and browser. It uses
 
 **About dagger**
 
-Dagger helps users to develop Ethereum DApps faster and user friendly. For more information:
+Dagger helps users to develop faster and better Ethereum DApps. For more information:
 
 - [Installation](#install)
 - [Example](#example)
@@ -44,6 +44,13 @@ Socket: mqtts://mainnet.dagger.matic.network (You can also use `ssl://` protocol
 ```
 Websocket: wss://kovan.dagger.matic.network
 Socket: mqtts://kovan.dagger.matic.network (You can also use `ssl://` protocol)
+```
+
+**Ropsten**
+
+```
+Websocket: wss://ropsten.dagger.matic.network
+Socket: mqtts://ropsten.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
 <a name="example"></a>
@@ -128,8 +135,8 @@ dagger.on('latest:addr/+/tx/out', ...)
 // Triggers when 1 GNT (Golem token) get transferred to Golem multisig wallet
 dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/#', ...)
 
-// Triggers when any amount of GNT (Golem token) get transferred to Golem multisig wallet
-dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/+/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/+', ...)
+// Triggers when any amount of GNT (Golem token) get sent from Golem multisig wallet
+dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/0x7da82c7ab4771ff031b66538d2fb9b0b047f6cf9/#', ...)
 
 // Listen for every Golem token transfer (notice `#` at the end)
 dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef/#', ...)
