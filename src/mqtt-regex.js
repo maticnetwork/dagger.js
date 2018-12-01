@@ -10,11 +10,12 @@ export default class MqttRegex {
     const topic = rawTopic.toLowerCase()
 
     // tokens
-    const tokens = MqttRegex.tokanize(topic).map(MqttRegex.processToken)
+    const tokens = MqttRegex.tokanize(topic)
 
     // set params
-    this.topic = topic
-    this.regex = MqttRegex.makeRegex(tokens)
+    this.topic = tokens.join('/')
+    this.rawTopic = topic
+    this.regex = MqttRegex.makeRegex(tokens.map(MqttRegex.processToken))
     this.exec = this.exec.bind(this)
   }
 
