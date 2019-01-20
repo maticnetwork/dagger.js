@@ -158,7 +158,7 @@ dagger.on('latest:log/0xa74476443119a942de498590fe1f2454d7d4ac0d/filter/0xddf252
 | tx/`txId`/receipt                              | When receipt is generated (included in block) for `txId`                | Yes            |
 | addr/`contractAddress`/deployed                | When new `contractAddress` included in block                            | Yes            |
 | log/`contractAddress`                          | When new log generated for `contractAddress`                            | Yes            |
-| log/`contractAddress`/filter/`topic1`/`topic2` | When new log with `topic1` and `topic2` generated for `contractAddress` | Yes            |
+| log/`contractAddress`/filter/`topic0`/`topic1` | When new log with `topic0` and `topic1` generated for `contractAddress` | Yes            |
 
 **Dagger events**
 
