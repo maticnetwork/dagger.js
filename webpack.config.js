@@ -22,7 +22,7 @@ const config = {
   output: {
     path: `${__dirname}/lib`,
     filename: outputFile,
-    library: libraryName,
+    library: 'Dagger',
     libraryTarget: 'umd',
     umdNamedDefine: true
   },
