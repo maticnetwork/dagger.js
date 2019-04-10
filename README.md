@@ -21,6 +21,8 @@ Dagger helps users to develop faster and better Ethereum DApps. For more informa
 
 ## Installation
 
+#### NPM
+---
 ```sh
 # Using Yarn
 yarn add eth-dagger
@@ -28,6 +30,19 @@ yarn add eth-dagger
 # Using NPM
 npm install eth-dagger --save
 ```
+
+#### Direct `<script>` Include
+---
+
+Simply download `lib/eth-dagger.min.js` and include with a script tag. `Dagger` will be registered as a global variable.
+
+##### CDN
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/eth-dagger/lib/eth-dagger.min.js"></script>
+```
+
+Matic is also available on [unpkg](https://unpkg.com/eth-dagger/lib/eth-dagger.min.js)
 
 <a name="network"></a>
 
