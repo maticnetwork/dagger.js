@@ -36,6 +36,11 @@ npm install eth-dagger --save
 
 Simply download `lib/eth-dagger.min.js` and include with a script tag. `Dagger` will be registered as a global variable.
 
+Usage:
+```js
+var Dagger = window.Dagger
+```
+
 ##### CDN
 
 ```html
