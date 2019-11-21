@@ -1,9 +1,8 @@
 /* global __dirname, require, module */
 const path = require('path')
 const env = require('yargs').argv.env // use --env with webpack 2
-const packageJSON = require('./package.json')
 
-const libraryName = packageJSON.name
+const libraryName = 'eth-dagger'
 
 let mode = 'development'
 let outputFile
