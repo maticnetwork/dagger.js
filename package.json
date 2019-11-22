@@ -1,6 +1,6 @@
 {
-  "name": "eth-dagger",
-  "version": "0.0.5",
+  "name": "@maticnetwork/eth-dagger",
+  "version": "0.0.1",
   "description": "Library to connect with dagger server and manage subscriptions for Ethereum",
   "main": "lib/index.js",
   "bin": {

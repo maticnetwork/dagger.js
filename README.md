@@ -28,7 +28,7 @@ Dagger helps users to develop faster and better Ethereum DApps. For more informa
 yarn add eth-dagger
 
 # Using NPM
-npm install eth-dagger --save
+npm install @maticnetwork/eth-dagger --save
 ```
 
 #### Direct `<script>` Include
@@ -86,7 +86,7 @@ Socket: mqtts://matic.dagger2.matic.network (You can also use `ssl://` protocol)
 ## Example
 
 ```javascript
-var Dagger = require("eth-dagger");
+var Dagger = require(" @maticnetwork/eth-dagger");
 
 // connect to Dagger ETH main network (network id: 1) over web socket
 var dagger = new Dagger("wss://mainnet.dagger.matic.network"); // dagger server
