@@ -25,7 +25,7 @@ Dagger helps users to develop faster and better Ethereum DApps. For more informa
 ---
 ```sh
 # Using Yarn
-yarn add eth-dagger
+yarn add @maticnetwork/eth-dagger
 
 # Using NPM
 npm install @maticnetwork/eth-dagger --save
