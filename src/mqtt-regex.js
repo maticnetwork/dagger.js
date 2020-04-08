@@ -26,7 +26,7 @@ export default class MqttRegex {
 
   static tokanize(rawTopic) {
     const topic = rawTopic.toLowerCase()
-    let tokens = topic.split('/')
+    const tokens = topic.split('/')
     if (tokens.length >= 4 && tokens[0].includes(':log')) {
       for (let i = 4; i < tokens.length; i++) {
         if (tokens[i] !== '+' && tokens[i] !== '#') {

@@ -181,7 +181,7 @@ const wooden = {
 
   _wrapMessage(room, route, message) {
     const key = `${room}:${route}`
-    const value = JSON.stringify({data: message, removed: false, room})
+    const value = JSON.stringify({ data: message, removed: false, room })
     return {
       key,
       value
