@@ -1,11 +1,8 @@
 {
   "name": "@maticnetwork/eth-dagger",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library to connect with dagger server and manage subscriptions for Ethereum",
   "main": "lib/index.js",
-  "bin": {
-    "woodendagger": "lib/wooden-dagger.js"
-  },
   "directories": {
     "lib": "./lib"
   },
@@ -42,12 +39,12 @@
     "mqtt-regex": "^1.0.5"
   },
   "devDependencies": {
-    "@babel/cli": "7.8.0",
-    "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.0",
-    "@babel/register": "7.9.0",
-    "babel-eslint": "10.1.0",
-    "babel-loader": "8.1.0",
+    "@babel/cli": "^7.8.0",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "@babel/register": "^7.9.0",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
     "babel-plugin-add-module-exports": "1.0.2",
     "chai": "4.2.0",
     "eslint": "6.8.0",
@@ -61,8 +58,8 @@
     "eslint-plugin-react": "7.19.0",
     "eslint-plugin-standard": "4.0.1",
     "mocha": "7.1.1",
+    "web3": "1.2.6",
     "webpack": "4.42.1",
-    "webpack-cli": "^3.3.11",
-    "web3": "1.2.6"
+    "webpack-cli": "^3.3.11"
   }
 }
