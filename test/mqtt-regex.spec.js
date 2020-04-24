@@ -10,17 +10,17 @@ const topics = [
   {
     topic: 'connected',
     tokens: ['connected'],
-    matches: {connected: true}
+    matches: { connected: true }
   },
   {
     topic: 'latest:block.number',
     tokens: ['latest:block.number'],
-    matches: {'latest:block.number': true, 'latest/block.number': false}
+    matches: { 'latest:block.number': true, 'latest/block.number': false }
   },
   {
     topic: 'latest:block',
     tokens: ['latest:block'],
-    matches: {'latest:block': true, 'latest/block': false}
+    matches: { 'latest:block': true, 'latest/block': false }
   },
   {
     topic: 'latest:addr/0xfB6916095ca1df60bB79Ce92cE3Ea74c37c5d359/tx',
