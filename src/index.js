@@ -57,7 +57,7 @@ export default class Dagger extends EventEmitter {
     }
 
     const messageId = parseInt(payload._id)
-    // if message id have been seen before let it through
+    // if message haven't been seen before let it through
     if (messageId > this.lastMessageIdReceived) {
       this.lastMessageIdReceived = messageId
 
