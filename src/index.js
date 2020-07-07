@@ -3,6 +3,7 @@ import EventEmitter from 'events'
 import MqttRegex from './mqtt-regex'
 import Room from './room'
 import Contract from './contract'
+import { uuid } from 'uuidv4'
 
 const ROOMS = ['latest', 'confirmed']
 export default class Dagger extends EventEmitter {
@@ -15,6 +16,13 @@ export default class Dagger extends EventEmitter {
     // set params
     this.url = url
     this.options = options
+    this.lastMessageIdReceived = -1
+
+    if (!('clean' in this.options)) {
+      // if user provides clean flag by himself, we assume he knows what he is doing
+      this.options.clean = false
+      this.options.clientId = uuid()
+    }
 
     // event params
     this._regexTopics = {}
@@ -31,9 +39,6 @@ export default class Dagger extends EventEmitter {
           resolve(...args)
         }
       })
-      this._client.on('reconnect', () => {
-        console.log('reconnecting...')
-      })
     })
 
     // mqtt client events
@@ -43,19 +48,26 @@ export default class Dagger extends EventEmitter {
     })
   }
 
-  _onMessage(topic, data) {
-    let payload = data.toString()
+  _onMessage(topic, message) {
+    let payload = message.toString()
     try {
       payload = JSON.parse(payload)
     } catch (e) {
       payload = {}
     }
 
-    // get matching topics
-    this.emit('message', payload)
-    this.getMatchingTopics(topic).forEach(eventName => {
-      this.emit(eventName, payload.data, !!payload.removed, payload)
-    })
+    const messageId = parseInt(payload._id)
+    // if message id have been seen before let it through
+    if (messageId > this.lastMessageIdReceived) {
+      this.lastMessageIdReceived = messageId
+
+      const message = payload.message
+
+      this.emit('message', message)
+      this.getMatchingTopics(topic).forEach(eventName => {
+        this.emit(eventName, message.data, message.removed, message)
+      })
+    }
   }
 
   _onConnect() {
@@ -113,11 +125,15 @@ export default class Dagger extends EventEmitter {
     return this.addListener(...args)
   }
 
+  _subscribe(topic) {
+    this._client.subscribe(topic, { qos: 1 })
+  }
+
   addListener(eventName, listener) {
     const mqttRegex = new MqttRegex(eventName)
     if (!this._regexTopics[mqttRegex.topic]) {
       // subscribe events from server using topic
-      this._client.subscribe(mqttRegex.topic)
+      this.subscribe(mqttRegex.topic)
     }
 
     // add to listeners using super
@@ -131,7 +147,7 @@ export default class Dagger extends EventEmitter {
     const mqttRegex = new MqttRegex(eventName)
     if (!this._regexTopics[mqttRegex.topic]) {
       // subscribe events from server using topic
-      this._client.subscribe(mqttRegex.topic)
+      this.subscribe(mqttRegex.topic)
     }
 
     // add to listeners using super
