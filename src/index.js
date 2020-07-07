@@ -133,7 +133,7 @@ export default class Dagger extends EventEmitter {
     const mqttRegex = new MqttRegex(eventName)
     if (!this._regexTopics[mqttRegex.topic]) {
       // subscribe events from server using topic
-      this.subscribe(mqttRegex.topic)
+      this._subscribe(mqttRegex.topic)
     }
 
     // add to listeners using super
@@ -147,7 +147,7 @@ export default class Dagger extends EventEmitter {
     const mqttRegex = new MqttRegex(eventName)
     if (!this._regexTopics[mqttRegex.topic]) {
       // subscribe events from server using topic
-      this.subscribe(mqttRegex.topic)
+      this._subscribe(mqttRegex.topic)
     }
 
     // add to listeners using super
