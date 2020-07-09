@@ -36,7 +36,8 @@
     "async-mqtt": "^2.5.0",
     "escape-string-regexp": "^3.0.0",
     "ethereumjs-util": "^6.2.0",
-    "mqtt-regex": "^1.0.5"
+    "mqtt-regex": "^1.0.5",
+    "uuidv4": "^6.1.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.0",
