@@ -61,11 +61,9 @@ export default class Dagger extends EventEmitter {
     if (messageId > this.lastMessageIdReceived) {
       this.lastMessageIdReceived = messageId
 
-      const message = payload.message
-
-      this.emit('message', message)
+      this.emit('message', payload)
       this.getMatchingTopics(topic).forEach(eventName => {
-        this.emit(eventName, message.data, message.removed, message)
+        this.emit(eventName, payload.data, payload.removed, payload)
       })
     }
   }
