@@ -6,6 +6,8 @@ import Contract from './contract'
 import { uuid } from 'uuidv4'
 
 const ROOMS = ['latest', 'confirmed']
+const ResetMessageTopic = 'resetMessageId'
+
 export default class Dagger extends EventEmitter {
   constructor(url, options = {}) {
     super()
@@ -16,7 +18,7 @@ export default class Dagger extends EventEmitter {
     // set params
     this.url = url
     this.options = options
-    this.lastMessageIdReceived = -1
+    this._resetReceivedMessageId()
 
     if (!('clean' in this.options)) {
       // if user provides clean flag by himself, we assume he knows what he is doing
@@ -36,6 +38,8 @@ export default class Dagger extends EventEmitter {
           !this._clientConnectPromise.resolved
         ) {
           this._clientConnectPromise.resolved = true
+          // listen for special event from dagger-server
+          this._subscribe(ResetMessageTopic)
           resolve(...args)
         }
       })
@@ -49,6 +53,11 @@ export default class Dagger extends EventEmitter {
   }
 
   _onMessage(topic, message) {
+    if (topic === ResetMessageTopic) {
+      this._resetReceivedMessageId()
+      return
+    }
+
     let payload = message.toString()
     try {
       payload = JSON.parse(payload)
@@ -57,6 +66,7 @@ export default class Dagger extends EventEmitter {
     }
 
     const messageId = parseInt(payload._id)
+
     // if message haven't been seen before let it through
     if (messageId > this.lastMessageIdReceived) {
       this.lastMessageIdReceived = messageId
@@ -66,6 +76,10 @@ export default class Dagger extends EventEmitter {
         this.emit(eventName, payload.data, payload.removed, payload)
       })
     }
+  }
+
+  _resetReceivedMessageId() {
+    this.lastMessageIdReceived = -1
   }
 
   _onConnect() {
