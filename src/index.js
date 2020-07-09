@@ -39,7 +39,7 @@ export default class Dagger extends EventEmitter {
         ) {
           this._clientConnectPromise.resolved = true
           // listen for special event from dagger-server
-          // this._subscribe(ResetMessageTopic)
+          this._subscribe(ResetMessageTopic)
           resolve(...args)
         }
       })
