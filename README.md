@@ -1,6 +1,6 @@
 ### Dagger client library
 
-![](https://github.com/maticnetwork/dagger.js/workflows/.github/workflows/ci.yml/badge.svg)
+![](https://github.com/maticnetwork/dagger.js/workflows/CI/badge.svg)
 
 Dagger is the library for dagger project written for node.js and browser. It uses dagger server to get realtime updates from Ethereum and Matic Network.
 
