@@ -7,6 +7,8 @@
     "lib": "./lib"
   },
   "scripts": {
+    "aedes": "aedes",
+    "broker": "aedes start --protos ws --ws-port 1883",
     "clean": "rm -rf lib",
     "build": "npm run lint && npm run clean && babel src/ --out-dir lib/ && npm run pack",
     "lint": "eslint src/**/*.js test/**/*.spec.js",
@@ -44,6 +46,7 @@
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.0",
     "@babel/register": "^7.9.0",
+    "aedes-cli": "^0.2.3",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-add-module-exports": "1.0.2",
