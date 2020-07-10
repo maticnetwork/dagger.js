@@ -1,8 +1,8 @@
-### eth-dagger
+### Dagger client library
 
-[![Build Status](https://travis-ci.org/maticnetwork/eth-dagger.js.svg?branch=master)](https://travis-ci.org/maticnetwork/eth-dagger.js)
+![](https://github.com/maticnetwork/dagger.js/workflows/CI/badge.svg)
 
-eth-dagger is library for dagger project written in node.js and browser. It uses dagger server to get realtime updates from Ethereum Network.
+Dagger is the library for dagger project written for node.js and browser. It uses dagger server to get realtime updates from Ethereum and Matic Network.
 
 **About dagger**
 
@@ -25,29 +25,21 @@ Dagger helps users to develop faster and better Ethereum DApps. For more informa
 ---
 ```sh
 # Using Yarn
-yarn add eth-dagger
+yarn add @maticnetwork/dagger
 
 # Using NPM
-npm install @maticnetwork/eth-dagger --save
+npm install @maticnetwork/dagger --save
 ```
 
 #### Direct `<script>` Include
 ---
 
-Simply download `lib/eth-dagger.min.js` and include with a script tag. `Dagger` will be registered as a global variable.
+Simply download `lib/dagger.min.js` and include with a script tag. `Dagger` will be registered as a global variable.
 
 Usage:
 ```js
 var Dagger = window.Dagger
 ```
-
-##### CDN
-
-```html
-<script src="https://cdn.jsdelivr.net/npm/eth-dagger/lib/eth-dagger.min.js"></script>
-```
-
-Matic is also available on [unpkg](https://unpkg.com/eth-dagger/lib/eth-dagger.min.js)
 
 <a name="network"></a>
 
@@ -86,7 +78,7 @@ Socket: mqtts://matic.dagger2.matic.network (You can also use `ssl://` protocol)
 ## Example
 
 ```javascript
-var Dagger = require(" @maticnetwork/eth-dagger");
+var Dagger = require(" @maticnetwork/dagger");
 
 // connect to Dagger ETH main network (network id: 1) over web socket
 var dagger = new Dagger("wss://mainnet.dagger.matic.network"); // dagger server
