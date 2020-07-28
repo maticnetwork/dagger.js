@@ -45,7 +45,7 @@ var Dagger = window.Dagger
 
 ## Network
 
-**Mainnet**
+**Ethereum**
 
 ```
 Websocket: wss://mainnet.dagger.matic.network
@@ -66,7 +66,28 @@ Websocket: wss://ropsten.dagger.matic.network
 Socket: mqtts://ropsten.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
-**Matic testnet**
+**Matic mainnet**
+
+```
+Websocket: wss://matic-mainnet.dagger.matic.network
+Socket: mqtts://matic-mainnet.dagger.matic.network (You can also use `ssl://` protocol)
+```
+
+**Matic testnet (Mumbai)**
+
+```
+Websocket: wss://mumbai-dagger.matic.today
+Socket: mqtts://mumbai-dagger.matic.today (You can also use `ssl://` protocol)
+```
+
+**Goerli**
+
+```
+Websocket: wss://goerli.dagger.matic.network
+Socket: mqtts://goerli.dagger.matic.network (You can also use `ssl://` protocol)
+```
+
+**Matic Testnetv2**
 
 ```
 Websocket: wss://matic.dagger2.matic.network
