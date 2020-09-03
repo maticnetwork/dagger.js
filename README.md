@@ -43,55 +43,52 @@ var Dagger = window.Dagger
 
 <a name="network"></a>
 
-## Network
+## Networks
 
-**Ethereum**
+### Ethereum
+
+#### Mainnet
 
 ```
 Websocket: wss://mainnet.dagger.matic.network
 Socket: mqtts://mainnet.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
-**Kovan**
+#### Kovan
 
 ```
 Websocket: wss://kovan.dagger.matic.network
 Socket: mqtts://kovan.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
-**Ropsten**
+#### Ropsten
 
 ```
 Websocket: wss://ropsten.dagger.matic.network
 Socket: mqtts://ropsten.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
-**Matic mainnet**
-
-```
-Websocket: wss://matic-mainnet.dagger.matic.network
-Socket: mqtts://matic-mainnet.dagger.matic.network (You can also use `ssl://` protocol)
-```
-
-**Matic testnet (Mumbai)**
-
-```
-Websocket: wss://mumbai-dagger.matic.today
-Socket: mqtts://mumbai-dagger.matic.today (You can also use `ssl://` protocol)
-```
-
-**Goerli**
+#### Goerli
 
 ```
 Websocket: wss://goerli.dagger.matic.network
 Socket: mqtts://goerli.dagger.matic.network (You can also use `ssl://` protocol)
 ```
 
-**Matic Testnetv2**
+### Matic
+
+#### Matic mainnet
 
 ```
-Websocket: wss://matic.dagger2.matic.network
-Socket: mqtts://matic.dagger2.matic.network (You can also use `ssl://` protocol)
+Websocket: wss://matic-mainnet.dagger.matic.network
+Socket: mqtts://matic-mainnet.dagger.matic.network (You can also use `ssl://` protocol)
+```
+
+#### Matic Mumbai Testnet
+
+```
+Websocket: wss://mumbai-dagger.matic.today
+Socket: mqtts://mumbai-dagger.matic.today (You can also use `ssl://` protocol)
 ```
 
 <a name="example"></a>
