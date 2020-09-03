@@ -3,7 +3,7 @@ import EventEmitter from 'events'
 import MqttRegex from './mqtt-regex'
 import Room from './room'
 import Contract from './contract'
-import { uuid } from 'uuidv4'
+import { v4 as uuidv4 } from 'uuid'
 
 const ROOMS = ['latest', 'confirmed']
 const ResetMessageTopic = 'resetMessageId'
@@ -23,7 +23,7 @@ export default class Dagger extends EventEmitter {
     if (!('clean' in this.options)) {
       // if user provides clean flag by himself, we assume he knows what he is doing
       this.options.clean = false
-      this.options.clientId = uuid()
+      this.options.clientId = uuidv4()
     }
 
     // event params
