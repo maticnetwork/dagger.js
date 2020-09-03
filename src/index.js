@@ -47,9 +47,9 @@ export default class Dagger extends EventEmitter {
 
     // mqtt client events
     this._client.on('message', this._onMessage.bind(this))
-      ;['Connect', 'Reconnect', 'Offline', 'Close', 'Error'].forEach(name => {
-        this._client.on(name.toLowerCase(), this[`_on${name}`].bind(this))
-      })
+    ;['Connect', 'Reconnect', 'Offline', 'Close', 'Error'].forEach(name => {
+      this._client.on(name.toLowerCase(), this[`_on${name}`].bind(this))
+    })
   }
 
   _onMessage(topic, message) {
